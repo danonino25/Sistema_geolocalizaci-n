@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa | GeoSearch</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: #f5f7fa;
+        }
+
+        header {
+            padding: 20px 40px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #4285f4;
+            font-weight: 500;
+        }
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+        }
+
+        iframe {
+            width: 85%;
+            height: 80%;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Vista del mapa</h1>
+    <a href="/">← Nueva búsqueda</a>
+</header>
+
+<div class="map-container">
+    <iframe
+        src="https://www.openstreetmap.org/export/embed.html?marker={{ lat }},{{ lon }}">
+    </iframe>
+</div>
+
+</body>
+</html>
+

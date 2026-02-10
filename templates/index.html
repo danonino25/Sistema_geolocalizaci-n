@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoSearch | Explora el mundo</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #e4ecf4);
+            color: #2c3e50;
+        }
+
+        header {
+            padding: 25px 40px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        header span {
+            color: #4285f4;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px);
+        }
+
+        .card {
+            background: white;
+            width: 420px;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .card p {
+            color: #6c7a89;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #4285f4;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            background: #4285f4;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #3367d6;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .result p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .map-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            background: #34a853;
+            color: white;
+            font-weight: 500;
+        }
+
+        .map-link:hover {
+            background: #2c8e46;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1><span>Geo</span>Search</h1>
+</header>
+
+<main>
+    <div class="card">
+        <h2>Explora lugares increíbles</h2>
+        <p>Busca cualquier ciudad, sitio histórico o lugar interesante del mundo</p>
+
+        <form method="POST">
+            <input type="text" name="lugar" placeholder="Ej. París, Machu Picchu, Dolores Hidalgo" required>
+            <button type="submit">Buscar ubicación</button>
+        </form>
+
+        {% if resultado %}
+        <div class="result">
+            <p><strong>📍 Lugar:</strong> {{ resultado.display_name }}</p>
+            <p><strong>🌐 Latitud:</strong> {{ resultado.lat }}</p>
+            <p><strong>🌐 Longitud:</strong> {{ resultado.lon }}</p>
+
+            <a class="map-link" href="/map?lat={{ resultado.lat }}&lon={{ resultado.lon }}">
+                Ver en el mapa
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</main>
+
+</body>
+</html>
+
